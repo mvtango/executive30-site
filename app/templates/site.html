@@ -25,8 +25,8 @@
 	  .left { max-width: 24em; }
  
       ul{list-style:none outside; margin-top: 2em;}
-      div#install-here  { display: none }
-      div#install-upgrade  { display: none }
+      .hidden { display: none }
+      .grey { color: #808080; }
 	  #navTabs {
 		  position: relative;
 	      bottom: -13px;
@@ -44,20 +44,22 @@
          
          
          
-         ua = document.location.hash || navigator.userAgent;
-		 var matches = ua.match(/^.*(iPhone|iPad).*(OS\s[0-9]).*(CriOS|Version)\/[.0-9]*\sMobile.*$/i);
+         var ua = navigator.userAgent;
+         if (document.location.hash.length>1) {
+			 ua=document.location.hash.substr(1);
+		 }
+		 var matches = ua.match(/^.*\((iPhone|iPad).*(OS\s[0-9]).*\)/i);
 		 if (matches) { /* iOS */
-			/* var d=matches[1];
-			if ((d==="iPhone") or (d==="iPad")) { 
-				$(".device-name").html(d);
-			}; */
-			if (matches[2].indexOf(" 7")>0) {
-				$("#install-other").css({ display : "none" });
-				$("#install-here").css({ display: "block" });
-			} else {
-				$("#install-other").css({ display: "none" });
-				$("#install-upgrade").css({ display: "block" });
+			var d=matches[1];
+			$(".device-name").html(d);
+			if (matches[2].indexOf(" 7")==-1) {
+				$("#notice-upgrade").removeClass("hidden");
 			}
+		 } else {
+			 $("#notice-nonios").removeClass("hidden");
+			 $("#notice-install").addClass("grey");
+			 $("input").prop('disabled', true);
+			 $("button").prop('disabled', true);
 		 }
 		 
 		 window.setInterval(function() {
@@ -81,6 +83,7 @@
 				 $e.tab('show');
 			 }
 		 }
+		 $("#mailto-link").attr({ href : "mailto:?subject=Link zur neuen dpa executive app&body="+document.location.href});
       });
     </script>
   </head>
@@ -154,37 +157,21 @@
 					Um den Gutscheincode zu erhalten, wenden Sie sich bitte an Ihren regionalen Vertriebsbeauftragten oder senden Sie eine E-Mail an: <a href="mailto:vertriebsservice@dpa.com">vertriebsservice@dpa.com</a>.
 					</div>
 
-					<div more-text="Mehr" class="product-review" id="install-other">
+					<div more-text="Mehr" class="product-review" >
 					<h4>
 					Installation
 					</h4>
-
-					<p>
-					Bitte öffnen Sie diese Seite auf Ihrem iPhone oder iPad und geben Sie den Gutscheincode ein.
-					Die App wird dann auf diesem <span class="device-name">Gerät</span> aus dem Appstore geladen und installiert.
+					<p id="notice-nonios" class="hidden">
+					Bitte rufen Sie diese Seite auf Ihrem iPad oder ihrem iPhone auf. Dort können Sie die App mit Hilfe des Formulars unten installieren.  
+					Sie können dafür zum Beispiel die <a id="mailto-link">Adresse dieser Seite per Mail an ihr Gerät verschicken</a>.
 					</p>
-					</div>
-
-					<div more-text="Mehr" class="product-review" id="install-upgrade">
-					<h4>
-					Installation
-					</h4>
-
-					<p>
-					Dieses <span class="device-name">Gerät</span> läuft noch nicht auf Version 7 des Betriebssystems iOS. Bitte 
-					aktualisieren Sie es oder bitten Ihre IT-Abteilung, das <span class="device-name">Gerät</span>
-					auf den aktuellen Stand zu bringen. 
+					<p id="notice-upgrade" class="hidden">
+					Ihr <span class="device-name">Gerät</span> ist noch nicht auf iOS 7 aktualisiert. Sie können die aktuelle Version der dpa executive App auf diesem Gerät nicht nutzen. Stattdessen
+					wird die Vorversion installiert. 
 					</p>
-					</div>
-
-					<div more-text="Mehr" class="product-review" id="install-here">
-					<h4>
-					Installation
-					</h4>
-
-					<p>
-					Bitte <span id="enter-code">geben Sie unten den Gutscheincode ein und </span>klicken Sie auf "Einlösen".
-					Die App wird dann auf diesem <span class="device-name">Gerät</span> aus dem Appstore geladen und installiert.
+					
+					<p id="notice-install">
+					Bitte <span id="enter-code">geben Sie unten den Gutscheincode ein und </span>klicken Sie auf "Einlösen". Die App wird dann auf ihrem <span class="device-name">Gerät</span> installiert.
 					<form  class="form-inline" action="https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/freeProductCodeWizard" method="GET">
 					<input type="text" class="input-medium"  placeholder="Gutscheincode" name="code" />
 					<button type="submit" class="btn">Einlösen</button>
@@ -205,7 +192,7 @@
 					Wird es auch eine App für Blackberry, Android- oder Windows Mobile-Geräte geben?
 					</h6>
 					<p>
-						Das ist noch offen. Wenn Sie Bedarf für Apps auf diesen Plattformen sehen, melden Sie sich bitte (wo?)
+						Das hängt unter anderem von der Nachfrage ab. Brauchen Sie solche Apps für Ihre Arbeit? Dann schreiben Sie uns bitte an <a href="mailto:executive-support@dpa-info.com">executive-support@dpa-info.com</a>.
 					</p>
 
 					<h6>
@@ -227,7 +214,7 @@
 					Kann ich die alte App weiterhin verwenden? 
 					</h6>
 					<p>
-					  Ja, aber ....? 
+						Im Prinzip ja, aber nicht sehr lange. Die Version 2.0 der App für iOS wird noch einige Zeit verfügbar sein. Allerdings wird sie nicht mehr weiterentwickelt. Bitte versuchen Sie, baldmöglichst auf iOS 7 und die neue App zu wechseln.
 					</p>
 					<h6>
 					Ich habe meinen Gutschein-Code verloren. Wo bekomme ich einen neuen? 
@@ -246,7 +233,7 @@
 					Ich habe ein neues iPhone / ein neues iPad, aber die dpa executive App ist verschwunden.
 					</h6>
 					<p>
-						<img src="{{ url_for('static',filename='ios7-icon-itunes.png') }}" style="display: inline-block; vertical-align: text-top; margin-right: 4px; float: left"/>Sie finden die App, wenn Sie auf Ihrem iPhone oder iPad die iTunes-Anwendung (siehe Icon links) öffnen und dort unter "Einkäufe" nachschauen. Sie können die App mit "Einkäufe wiederherstellen" wieder installieren.
+						<img src="{{ url_for('static',filename='ios7-icon-appstore.png') }}" style="display: inline-block; vertical-align: text-top; margin-right: 4px; float: left"/>Sie finden die App, wenn Sie auf Ihrem iPhone oder iPad die iTunes-Anwendung (siehe Icon links) öffnen und dort unter "Einkäufe" nachschauen. Sie können die App mit "Einkäufe wiederherstellen" wieder installieren.
 						 
 					</p>
 					
