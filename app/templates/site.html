@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <title>dpa executive 3.0 | dpa newslab</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='bootstrap.min.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='bootstrap-responsive.min.css') }}" />
+     <style type="text/css">
+      #title { margin-bottom: 1em; }
+      body{font:12px/18px "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif;background:#f9f9f9;}
+
+      @media (min-width: 768px) { 
+
+        html,body{background:#f5f6f7 url({{ url_for('static',filename='gradient_texture20100901.jpg') }}) repeat-x 0 0}
+        #content{-webkit-box-shadow:rgba(0,0,0,.3) 0 1px 3px;-moz-box-shadow:rgba(0,0,0,.3) 0 1px 3px; padding: 1em; margin-top: 2em;}
+        #content{border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-o-border-radius:4px;-khtml-border-radius:4px;-webkit-box-shadow:rgba(0,0,0,.3) 0 1px 3px;-moz-box-shadow:rgba(0,0,0,.3) 0 1px 3px;}
+      }
+      .artwork > img { -webkit-filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.8)); }
+      #content {background:#f9f9f9;}
+      .artwork { margin-left: 10px; }
+      body {padding-bottom: 5em; }
+      #leftcolumn { max-width: 24em; }
+	  .left { max-width: 24em; }
+ 
+      ul{list-style:none outside; margin-top: 2em;}
+      div#install-here  { display: none }
+      div#install-upgrade  { display: none }
+	  #navTabs {
+		  position: relative;
+	      bottom: -13px;
+          margin-right: 75px;
+      }
+    </style>
+
+    <script src="{{ url_for('static',filename='jquery-min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script> 
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+         var code = location.search.split('?code=')[1];
+         if (code) { $("input[name='code']").val(code); }
+         
+         
+         
+         ua = document.location.hash || navigator.userAgent;
+		 var matches = ua.match(/^.*(iPhone|iPad).*(OS\s[0-9]).*(CriOS|Version)\/[.0-9]*\sMobile.*$/i);
+		 if (matches) { /* iOS */
+			/* var d=matches[1];
+			if ((d==="iPhone") or (d==="iPad")) { 
+				$(".device-name").html(d);
+			}; */
+			if (matches[2].indexOf(" 7")>0) {
+				$("#install-other").css({ display : "none" });
+				$("#install-here").css({ display: "block" });
+			} else {
+				$("#install-other").css({ display: "none" });
+				$("#install-upgrade").css({ display: "block" });
+			}
+		 }
+		 
+		 window.setInterval(function() {
+			 var v=$("input[name='code']").val();
+			 var $d=$("#enter-code");
+			 if (v.length > 4) {
+				 $d.css({ display: "none" })
+			 } else {
+    			 $d.css({ display: "inline" })
+			 }
+		 }, 500);
+         
+         $('#navTabs a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		 });
+         var page = "{{ page }}";
+         if (page) {
+			 var $e=$("#navTabs a[href='#tab-"+page+"']");
+			 if ($e) {
+				 $e.tab('show');
+			 }
+		 }
+      });
+    </script>
+  </head>
+
+<body>
+
+<div id="content" class="container">
+
+           <div id="title" class="row">
+
+              <div class="left span4">
+				<h2>dpa executive 3.0</h2>
+				<h4>von dpa-newslab</h4>
+              </div>
+              <div class="right span8">
+				  		<ul class="nav nav-pills" id="navTabs">
+							<li class="active"><a href="#tab-app" data-toggle="pill">App</a></li>
+							<li>               <a href="#tab-faq" data-toggle="pill">Fragen &amp; Antworten</a></li>
+						</ul>
+              </div>
+           </div>
+
+  <div class="row">
+    <div id="leftcolumn" class="span4">
+              <div rating-software="300,itunes-games" parental-rating="1" class="lockup product application newsstand">
+		<a href="https://itunes.apple.com/de/app/neue-oz-digital/id498958384?mt=8">
+		  <div class="artwork"><img width="170" height="170" alt="dpa-Executive" class="artwork" src="{{ url_for('static',filename='logo_3.0.png') }}" /><span class="mask"></span></div></a>
+		<!-- <a onclick="" href="#" class="action view-in-itunes"><span>In iTunes ansehen</span></a> -->
+		<ul class="list">
+		  <!-- <li><div class="price">Kostenlos</div></li>-->
+		  <li class="genre"><span class="alabel">Kategorie: </span><a href="https://itunes.apple.com/de/genre/ios-nachrichten/id6009?mt=8">Nachrichten</a></li>
+		  <li class="release-date"><span class="alabel">Aktualisiert: </span> 29.1.2014</li>
+		  <li><span class="alabel">Version: </span>3.0</li>
+		  <li><span class="alabel">Größe: </span>6.61 MB</li>
+		  <li class="language"><span class="alabel">Sprache: </span>Deutsch</li>
+		  <li><span class="alabel">Entwickler: </span>dpa-newslab</li>
+		  <li class="copyright">© 2013-2014 dpa-infocom GmbH</li>
+		</ul>
+	      </div>
+
+
+    </div>
+    <div class="span8">
+		<div class="tab-content">
+			<div class="tab-pane active" id="tab-app">
+					<div more-text="Mehr" class="product-review">
+					<h4>
+					Beschreibung
+					</h4>
+					<p>Die komplett überarbeitete dpa executive App bietet Ihnen eine schnelle und moderne Plattform für Ihren persönlichen Nachrichtenüberblick. Alles auf einen Blick - dank eines klaren Layouts, einer intuitiven Navigation Aktualisierung im Hintergrund (via WLAN) sind Sie ständig auf dem Laufenden. Mit der Sendefunktion können Sie Meldungen intern weiterleiten.</p>
+					</div>
+					<!--     <div class="app-links"><a rel="nofollow" target="_blank" href="..." class="see-all"></a><a rel="nofollow" target="_blank" href="..." class="see-all">Support</a></div> -->
+
+					<div more-text="Mehr" class="product-review">
+					<h4>
+					Neue Funktionen von Version 3.0
+					</h4>
+					<p><b>&#x2022;</b> Neu gestaltet für iOS7, Apples aktuellem Standard für mobile Geräte<br/>
+					   <b>&#x2022;</b> Wesentlich schnellere Startzeit<br/>
+					   <b>&#x2022;</b> Bessere Darstellung von Themenschwerpunkten und Bilderserien</p>
+
+					</ul>
+					</div>
+
+					<div more-text="Mehr" class="product-review">
+					<h4>
+					Gutschein-Code
+					</h4>
+					<p>
+					Sie können die App ausschließlich über einen Gutschein-Code beziehen.
+					Um den Gutscheincode zu erhalten, wenden Sie sich bitte an Ihren regionalen Vertriebsbeauftragten oder senden Sie eine E-Mail an: <a href="mailto:vertriebsservice@dpa.com">vertriebsservice@dpa.com</a>.
+					</div>
+
+					<div more-text="Mehr" class="product-review" id="install-other">
+					<h4>
+					Installation
+					</h4>
+
+					<p>
+					Bitte öffnen Sie diese Seite auf Ihrem iPhone oder iPad und geben Sie den Gutscheincode ein.
+					Die App wird dann auf diesem <span class="device-name">Gerät</span> aus dem Appstore geladen und installiert.
+					</p>
+					</div>
+
+					<div more-text="Mehr" class="product-review" id="install-upgrade">
+					<h4>
+					Installation
+					</h4>
+
+					<p>
+					Dieses <span class="device-name">Gerät</span> läuft noch nicht auf Version 7 des Betriebssystems iOS. Bitte 
+					aktualisieren Sie es oder bitten Ihre IT-Abteilung, das <span class="device-name">Gerät</span>
+					auf den aktuellen Stand zu bringen. 
+					</p>
+					</div>
+
+					<div more-text="Mehr" class="product-review" id="install-here">
+					<h4>
+					Installation
+					</h4>
+
+					<p>
+					Bitte <span id="enter-code">geben Sie unten den Gutscheincode ein und </span>klicken Sie auf "Einlösen".
+					Die App wird dann auf diesem <span class="device-name">Gerät</span> aus dem Appstore geladen und installiert.
+					<form  class="form-inline" action="https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/freeProductCodeWizard" method="GET">
+					<input type="text" class="input-medium"  placeholder="Gutscheincode" name="code" />
+					<button type="submit" class="btn">Einlösen</button>
+					</form>
+					</p>
+					</div>
+
+			</div>
+			<div class="tab-pane" id="tab-faq">
+				    <h4>Fragen & Antworten</h4>
+					<h6>
+					Warum funktioniert die App nur mit iOS7?
+					</h6>
+					<p>
+						Viele der Verbesserungen lassen sich nur mit der neuen Version von Apples Betriebssystem umsetzen. 
+					</p>
+					<h6>
+					Wird es auch eine App für Blackberry, Android- oder Windows Mobile-Geräte geben?
+					</h6>
+					<p>
+						Das ist noch offen. Wenn Sie Bedarf für Apps auf diesen Plattformen sehen, melden Sie sich bitte (wo?)
+					</p>
+
+					<h6>
+					Wie kann ich auf iOS7 aktualisieren?
+					</h6>
+					<p>
+					  Sofern das <span class="device-name">Gerät</span> nicht von Ihrer IT-Abteilung gewartet werden muss, können Sie es einfach an das Ladegerät anschließen, ihre Daten sichern und dann
+					  unter "Einstellungen", "Allgemein", "Software-Updates" die Aktualisierung beginnen. Das <span class="device-name">Gerät</span> sollte mit einem WLAN verbunden sein,
+					  damit das Herunterladen des neuen Betriebssystems nicht zu lange dauert. Bei <a target="_blank" href="http://www.areamobile.de/specials/25284-ios-7-update-download-und-installation-des-apple-os-auf-iphone-und-ipad">Areamobile.de</a> 
+					  finden Sie eine detailliertere Anleitung.  
+				    </p>
+					<h6>
+					Mein <span class="device-name">Gerät</span> lässt sich nicht aktualisieren!
+					</h6>
+					<p>
+					Das bedeutet leider, dass Sie die neue dpa executive App nicht verwenden können. 
+					</p>
+					<h6>
+					Kann ich die alte App weiterhin verwenden? 
+					</h6>
+					<p>
+					  Ja, aber ....? 
+					</p>
+					<h6>
+					Ich habe meinen Gutschein-Code verloren. Wo bekomme ich einen neuen? 
+					</h6>
+					<p>
+					  Bitte sprechen Sie uns an: <a href="mailto:vertriebsservice@dpa.com">vertriebsservice@dpa.com</a>.
+					</p>
+					<h6>
+					Ich finde die App nicht im App Store!
+					</h6>
+					<p>
+						Die dpa executive gibt es tatsächlich nicht im App Store, sondern nur über <a href="#" onClick="$('#navTabs a:first').tab('show');">diese Seite</a> - mit einem Gutscheincode vom 
+						dpa-Vertrieb. Bitte sprechen Sie uns an: <a href="mailto:vertriebsservice@dpa.com">vertriebsservice@dpa.com</a>. 
+					</p>
+					<h6>
+					Ich habe ein neues iPhone / ein neues iPad, aber die dpa executive App ist verschwunden.
+					</h6>
+					<p>
+						<img src="{{ url_for('static',filename='ios7-icon-itunes.png') }}" style="display: inline-block; vertical-align: text-top; margin-right: 4px; float: left"/>Sie finden die App, wenn Sie auf Ihrem iPhone oder iPad die iTunes-Anwendung (siehe Icon links) öffnen und dort unter "Einkäufe" nachschauen. Sie können die App mit "Einkäufe wiederherstellen" wieder installieren.
+						 
+					</p>
+					
+					</div>
+			</div>
+		</div>
+	</div>
+	</div>
+  </div>
+ </div>
+</div>		
+</body>
+</html>

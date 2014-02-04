@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='bootstrap.min.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='bootstrap-responsive.min.css') }}" />
+     <style type="text/css">
+      #title { margin-bottom: 1em; }
+      body{font:12px/18px "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif;background:#f9f9f9;}
+
+      @media (min-width: 768px) { 
+
+        html,body{background:#f5f6f7 url(gradient_texture20100901.jpg) repeat-x 0 0}
+        #content{-webkit-box-shadow:rgba(0,0,0,.3) 0 1px 3px;-moz-box-shadow:rgba(0,0,0,.3) 0 1px 3px; padding: 1em; margin-top: 2em;}
+        #content{border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-o-border-radius:4px;-khtml-border-radius:4px;-webkit-box-shadow:rgba(0,0,0,.3) 0 1px 3px;-moz-box-shadow:rgba(0,0,0,.3) 0 1px 3px;}
+      }
+      .artwork > img { -webkit-filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.8)); }
+      #content {background:#f9f9f9;}
+      .artwork { margin-left: 10px; }
+      body {padding-bottom: 5em; }
+      #leftcolumn { max-width: 20em; }
+      ul{list-style:none outside; margin-top: 2em;}
+    </style>
+
+    <script src="{{ url_for('static',filename='jquery-min.js') }}"></script>
+    <!-- <script src="bootstrap/js/bootstrap.min.js"></script> --> 
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+         var code = location.search.split('?code=')[1];
+         if (code) { $("input[name='code']").val(code); }
+      });
+    </script>
+  </head>
+
+<body>
+
+<div id="content" class="container">
+
+           <div id="title" class="row">
+
+              <div class="left span8">
+		<h2>{% block title %} {% endblock %}</h2>
+		<h4>von dpa-newslab</h4>
+              </div>
+
+              <div class="right span4">
+              </div>
+	      
+
+           </div>
+
+  <div class="row">
+    <div id="leftcolumn" class="span4">
+              <div rating-software="300,itunes-games" parental-rating="1" class="lockup product application newsstand">
+		<a href="https://itunes.apple.com/de/app/neue-oz-digital/id498958384?mt=8">
+		  <div class="artwork"><img width="170" height="170" alt="dpa-Executive" class="artwork" src="logo.png" /><span class="mask"></span></div></a>
+		<!-- <a onclick="" href="#" class="action view-in-itunes"><span>In iTunes ansehen</span></a> -->
+		<ul class="list">
+		  <!-- <li><div class="price">Kostenlos</div></li>-->
+		  <li class="genre"><span class="alabel">Kategorie: </span><a href="https://itunes.apple.com/de/genre/ios-nachrichten/id6009?mt=8">Nachrichten</a></li>
+		  <li class="release-date"><span class="alabel">Aktualisiert: </span> 29.1.2014</li>
+		  <li><span class="alabel">Version: </span>3.0</li>
+		  <li><span class="alabel">Größe: </span>6.61 MB</li>
+		  <li class="language"><span class="alabel">Sprache: </span>Deutsch</li>
+		  <li><span class="alabel">Entwickler: </span>dpa-newslab</li>
+		  <li class="copyright">© 2013-2014 dpa-infocom GmbH</li>
+		</ul>
+	      </div>
+
+
+    </div>
+    <div class="span8">
+              <div more-text="Mehr" class="product-review">
+		<h4>
+		  Beschreibung
+		</h4>
+		<p>dpa-Executive bietet Ihnen eine moderne und leistungsstarke Plattform für Ihren persönlichen Nachrichtenüberblick. Mit der App für iPhone und iPad erhalten Sie genau die Nachrichten, die für Sie relevant sind. Alles auf einen Blick - dank eines klaren Layouts, einer intuitiven Navigation und der individuellen Konfigurierbarkeit. Mit der Archiv- und Sendefunktion können Sie Meldungen speichern oder intern weiterleiten.</p>
+	      </div>
+	      <!--     <div class="app-links"><a rel="nofollow" target="_blank" href="..." class="see-all"></a><a rel="nofollow" target="_blank" href="..." class="see-all">Support</a></div> -->
+
+              <div more-text="Mehr" class="product-review">
+		<h4>
+		  Neue Funktionen von Version 2.0.2
+		</h4>
+		<p>* performance optimizations<br/>* minor bug fixes</p>
+	      </div>
+
+	       <div more-text="Mehr" class="product-review">
+		 <h4>
+		   Gutschein-Code
+		 </h4>
+		 <p>
+		Sie können die App ausschließlich über einen Gutschein-Code beziehen.
+		Um den Gutscheincode zu erhalten, wenden Sie sich bitte an Ihren regionalen Vertriebsbeauftragten oder senden Sie eine E-Mail an: <a href="mailto:vertriebsservice@dpa.com">vertriebsservice@dpa.com</a>
+		 </div>
+
+	       <div more-text="Mehr" class="product-review" id="install-other">
+		 <h4>
+		   Installation
+		 </h4>
+
+		 <p>
+		   Bitte öffnen Sie diese Seite auf Ihrem iPhone oder iPad und geben Sie den Gutscheincode ein.
+		   Die App wird dann auf Ihrem Gerät aus dem Appstore geladen und installiert.
+		 </p>
+	      </div>
+ 	       <div more-text="Mehr" class="product-review" id="install-here">
+		 <h4>
+		   Installation
+		 </h4>
+
+		 <p>
+		   Bitte geben Sie unten den Gutscheincode ein und klicken dann auf "Einlösen".
+		   Die App wird dann auf Ihrem Gerät aus dem Appstore geladen und installiert.
+		   <form  class="form-inline" action="https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/freeProductCodeWizard" method="GET">
+		     <input type="text" class="input-medium"  placeholder="Gutscheincode" name="code" />
+		     <button type="submit" class="btn">Einlösen</button>
+		   </form>
+		 </p>
+	      </div>
+
+    </div>
+  </div>
+</div>
+
+      
+  </body>
+</html>

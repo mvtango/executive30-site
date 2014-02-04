@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <title>dpa executive 3.0 | dpa newslab</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='bootstrap.min.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='bootstrap-responsive.min.css') }}" />
+     <style type="text/css">
+      #title { margin-bottom: 1em; }
+      body{font:12px/18px "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif;background:#f9f9f9;}
+
+      @media (min-width: 768px) { 
+
+        html,body{background:#f5f6f7 url({{ url_for('static',filename='gradient_texture20100901.jpg') }}) repeat-x 0 0}
+        #content{-webkit-box-shadow:rgba(0,0,0,.3) 0 1px 3px;-moz-box-shadow:rgba(0,0,0,.3) 0 1px 3px; padding: 1em; margin-top: 2em;}
+        #content{border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-o-border-radius:4px;-khtml-border-radius:4px;-webkit-box-shadow:rgba(0,0,0,.3) 0 1px 3px;-moz-box-shadow:rgba(0,0,0,.3) 0 1px 3px;}
+      }
+      .artwork > img { -webkit-filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.8)); }
+      #content {background:#f9f9f9;}
+      .artwork { margin-left: 10px; }
+      body {padding-bottom: 5em; }
+      #leftcolumn { max-width: 20em; }
+      ul{list-style:none outside; margin-top: 2em;}
+      div#install-here  { display: none }
+      div#install-upgrade  { display: none }
+ 
+    </style>
+
+    <script src="{{ url_for('static',filename='jquery-min.js') }}"></script>
+    <script src="{{ url_for('static',filename='bootstrap/js/bootstrap.min.js') }}"></script> 
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+         var code = location.search.split('?code=')[1];
+         if (code) { $("input[name='code']").val(code); }
+         
+         
+         
+         ua = document.location.hash || navigator.userAgent;
+		 var matches = ua.match(/^.*(iPhone|iPad).*(OS\s[0-9]).*(CriOS|Version)\/[.0-9]*\sMobile.*$/i);
+		 if (matches) { /* iOS */ 
+			if (matches[2].indexOf(" 7")>0) {
+				$("#install-other").css({ display : "none" });
+				$("#install-here").css({ display: "block" });
+			} else {
+				$("#install-other").css({ display: "none" });
+				$("#install-upgrade").css({ display: "block" });
+			}
+		 }
+		 
+		 window.setInterval(function() {
+			 var v=$("input[name='code']").val();
+			 var $d=$("#enter-code");
+			 if (v.length > 4) {
+				 $d.css({ display: "none" })
+			 } else {
+    			 $d.css({ display: "inline" })
+			 }
+		 }, 500);
+         
+         $('#myTab a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		 });
+         
+      });
+    </script>
+  </head>
+
+<body>
+
+<div id="content" class="container">
+
+           <div id="title" class="row">
+
+              <div class="left span3">
+				<h2>dpa executive 3.0</h2>
+				<h4>von dpa-newslab</h4>
+              </div>
+              <div class="right span9">
+				  		<ul class="nav nav-tabs" id="myTab">
+							<li class="active"><a href="#tab-app">App</a></li>
+							<li><a href="#tab-faq">Fragen &amp; Antworten</a></li>
+						</ul>
+              </div>
+           </div>
+
+  <div class="row">
+    <div id="leftcolumn" class="span3">
+              <div rating-software="300,itunes-games" parental-rating="1" class="lockup product application newsstand">
+		<a href="https://itunes.apple.com/de/app/neue-oz-digital/id498958384?mt=8">
+		  <div class="artwork"><img width="170" height="170" alt="dpa-Executive" class="artwork" src="{{ url_for('static',filename='logo_3.0.png') }}" /><span class="mask"></span></div></a>
+		<!-- <a onclick="" href="#" class="action view-in-itunes"><span>In iTunes ansehen</span></a> -->
+		<ul class="list">
+		  <!-- <li><div class="price">Kostenlos</div></li>-->
+		  <li class="genre"><span class="alabel">Kategorie: </span><a href="https://itunes.apple.com/de/genre/ios-nachrichten/id6009?mt=8">Nachrichten</a></li>
+		  <li class="release-date"><span class="alabel">Aktualisiert: </span> 29.1.2014</li>
+		  <li><span class="alabel">Version: </span>3.0</li>
+		  <li><span class="alabel">Größe: </span>6.61 MB</li>
+		  <li class="language"><span class="alabel">Sprache: </span>Deutsch</li>
+		  <li><span class="alabel">Entwickler: </span>dpa-newslab</li>
+		  <li class="copyright">© 2013-2014 dpa-infocom GmbH</li>
+		</ul>
+	      </div>
+
+
+    </div>
+    <div class="span9">
+		<div class="tab-content">
+			<div class="tab-pane" id="tab-app">
+	     </div> <!-- tab-pane -->
+		 <div class="tab-pane" id="tab-faq">
+			Hier Faq!
+		 </div>  <!-- tab-pane -->
+       </div> <!-- tab-content -->
+    </div> <!-- span8 -->
+  </div> <!-- row -->
+</div> <!-- container -->
+
+      
+  </body>
+</html>
