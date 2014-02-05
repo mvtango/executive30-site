@@ -26,6 +26,12 @@ def support():
 @app.route('/support/executive/faq.html')
 def faq():
 	return redirect("/support/executive/index.html?page=faq")
-  
+ 
+
+@app.route('/support/executive/screenshots.html')
+def screenshots():
+	return redirect("/support/executive/index.html?page=screen")
+
+ 
 if __name__ == '__main__':
 	app.run(debug=True)

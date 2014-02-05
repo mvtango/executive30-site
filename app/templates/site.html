@@ -2,7 +2,7 @@
 <html lang="de">
   <head>
     <meta charset="utf-8">
-    <title>dpa executive 3.0 | dpa newslab</title>
+    <title>dpa-Executive 3.0 | dpa newslab</title>
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='bootstrap.min.css') }}" />
@@ -17,7 +17,8 @@
         #content{-webkit-box-shadow:rgba(0,0,0,.3) 0 1px 3px;-moz-box-shadow:rgba(0,0,0,.3) 0 1px 3px; padding: 1em; margin-top: 2em;}
         #content{border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-o-border-radius:4px;-khtml-border-radius:4px;-webkit-box-shadow:rgba(0,0,0,.3) 0 1px 3px;-moz-box-shadow:rgba(0,0,0,.3) 0 1px 3px;}
       }
-      .artwork > img { -webkit-filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.8)); }
+      .artwork > img { /* -webkit-filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.8)); */
+		               border-radius: 30px;}
       #content {background:#f9f9f9;}
       .artwork { margin-left: 10px; }
       body {padding-bottom: 5em; }
@@ -32,6 +33,15 @@
 	      bottom: -13px;
           margin-right: 75px;
       }
+      #screenshots img {
+				position: absolute;
+				border: 2px solid #B3AAAA;
+				border-radius: 10px; 
+	  }
+	  
+	  #panes .tab-pane {
+				min-height: 700px;
+	  }
     </style>
 
     <script src="{{ url_for('static',filename='jquery-min.js') }}"></script>
@@ -40,7 +50,9 @@
     <script type="text/javascript">
       $(document).ready(function() {
          var code = location.search.split('?code=')[1];
-         if (code) { $("input[name='code']").val(code); }
+         if (code) { $("input[name='code']").val(code); 
+					 $("#installation")[0].scrollIntoView();
+					 }
          
          
          
@@ -83,7 +95,7 @@
 				 $e.tab('show');
 			 }
 		 }
-		 $("#mailto-link").attr({ href : "mailto:?subject=Link zur neuen dpa executive app&body="+document.location.href});
+		 $("#mailto-link").attr({ href : "mailto:?subject=Link zur neuen dpa-Executive app&body="+document.location.href});
       });
     </script>
   </head>
@@ -95,19 +107,23 @@
            <div id="title" class="row">
 
               <div class="left span4">
-				<h2>dpa executive 3.0</h2>
+				<img class="visible-phone" style="float: left; width: 64px; margin-top: 0.8em;
+margin-right: 0.4em !important;" src="{{ url_for('static',filename='logo_3.0.png') }}" >
+				<h2>dpa-Executive 3.0</h2>
 				<h4>von dpa-newslab</h4>
               </div>
               <div class="right span8">
 				  		<ul class="nav nav-pills" id="navTabs">
 							<li class="active"><a href="#tab-app" data-toggle="pill">App</a></li>
+							<li>               <a href="#tab-screen" data-toggle="pill">Screenshots</a></li>
 							<li>               <a href="#tab-faq" data-toggle="pill">Fragen &amp; Antworten</a></li>
+	
 						</ul>
               </div>
            </div>
 
   <div class="row">
-    <div id="leftcolumn" class="span4">
+    <div id="leftcolumn" class="span4 visible-tablet visible-desktop">
               <div rating-software="300,itunes-games" parental-rating="1" class="lockup product application newsstand">
 		<a href="https://itunes.apple.com/de/app/neue-oz-digital/id498958384?mt=8">
 		  <div class="artwork"><img width="170" height="170" alt="dpa-Executive" class="artwork" src="{{ url_for('static',filename='logo_3.0.png') }}" /><span class="mask"></span></div></a>
@@ -127,13 +143,13 @@
 
     </div>
     <div class="span8">
-		<div class="tab-content">
+		<div id="panes" class="tab-content">
 			<div class="tab-pane active" id="tab-app">
 					<div more-text="Mehr" class="product-review">
 					<h4>
 					Beschreibung
 					</h4>
-					<p>Die komplett überarbeitete dpa executive App bietet Ihnen eine schnelle und moderne Plattform für Ihren persönlichen Nachrichtenüberblick. Alles auf einen Blick - dank eines klaren Layouts, einer intuitiven Navigation Aktualisierung im Hintergrund (via WLAN) sind Sie ständig auf dem Laufenden. Mit der Sendefunktion können Sie Meldungen intern weiterleiten.</p>
+					<p>Die komplett überarbeitete dpa-Executive-App bietet Ihnen eine schnelle und moderne Plattform für Ihren persönlichen Nachrichtenüberblick. Alles auf einen Blick - dank eines klaren Layouts, einer intuitiven Navigation und Aktualisierung im Hintergrund (via WLAN) sind Sie ständig auf dem Laufenden. Mit der Sendefunktion können Sie Meldungen intern weiterleiten.</p>
 					</div>
 					<!--     <div class="app-links"><a rel="nofollow" target="_blank" href="..." class="see-all"></a><a rel="nofollow" target="_blank" href="..." class="see-all">Support</a></div> -->
 
@@ -154,26 +170,26 @@
 					</h4>
 					<p>
 					Sie können die App ausschließlich über einen Gutschein-Code beziehen.
-					Um den Gutscheincode zu erhalten, wenden Sie sich bitte an Ihren regionalen Vertriebsbeauftragten oder senden Sie eine E-Mail an: <a href="mailto:vertriebsservice@dpa.com">vertriebsservice@dpa.com</a>.
+					Um den Gutschein-Code zu erhalten, wenden Sie sich bitte an Ihren regionalen Vertriebsbeauftragten oder senden Sie eine E-Mail an: <a href="mailto:vertriebsservice@dpa.com">vertriebsservice@dpa.com</a>.
 					</div>
 
 					<div more-text="Mehr" class="product-review" >
-					<h4>
+					<h4 id="installation">
 					Installation
 					</h4>
 					<p id="notice-nonios" class="hidden">
-					Bitte rufen Sie diese Seite auf Ihrem iPad oder ihrem iPhone auf. Dort können Sie die App mit Hilfe des Formulars unten installieren.  
-					Sie können dafür zum Beispiel die <a id="mailto-link">Adresse dieser Seite per Mail an ihr Gerät verschicken</a>.
+					Bitte rufen Sie diese Seite auf Ihrem iPad oder Ihrem iPhone auf. Dort können Sie die App mit Hilfe des Formulars unten installieren.  
+					Dafür können Sie die <a id="mailto-link">Adresse dieser Seite per Mail an ihr Gerät verschicken</a>.
 					</p>
 					<p id="notice-upgrade" class="hidden">
-					Ihr <span class="device-name">Gerät</span> ist noch nicht auf iOS 7 aktualisiert. Sie können die aktuelle Version der dpa executive App auf diesem Gerät nicht nutzen. Stattdessen
+					Ihr <span class="device-name">Gerät</span> ist noch nicht auf iOS 7 aktualisiert. Sie können die aktuelle Version der dpa-Executive-App auf diesem Gerät nicht nutzen. Stattdessen
 					wird die Vorversion installiert. 
 					</p>
 					
 					<p id="notice-install">
-					Bitte <span id="enter-code">geben Sie unten den Gutscheincode ein und </span>klicken Sie auf "Einlösen". Die App wird dann auf ihrem <span class="device-name">Gerät</span> installiert.
+					Bitte <span id="enter-code">geben Sie unten den Gutschein-Code ein und </span>klicken Sie auf "Einlösen". Die App wird dann auf Ihrem <span class="device-name">Gerät</span> installiert.
 					<form  class="form-inline" action="https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/freeProductCodeWizard" method="GET">
-					<input type="text" class="input-medium"  placeholder="Gutscheincode" name="code" />
+					<input type="text" class="input-medium"  placeholder="Gutschein-Code" name="code" />
 					<button type="submit" class="btn">Einlösen</button>
 					</form>
 					</p>
@@ -199,7 +215,7 @@
 					Wie kann ich auf iOS7 aktualisieren?
 					</h6>
 					<p>
-					  Sofern das <span class="device-name">Gerät</span> nicht von Ihrer IT-Abteilung gewartet werden muss, können Sie es einfach an das Ladegerät anschließen, ihre Daten sichern und dann
+					  Sofern das <span class="device-name">Gerät</span> nicht von Ihrer IT-Abteilung gewartet werden muss, können Sie es einfach an das Ladegerät anschließen, Ihre Daten sichern und dann
 					  unter "Einstellungen", "Allgemein", "Software-Updates" die Aktualisierung beginnen. Das <span class="device-name">Gerät</span> sollte mit einem WLAN verbunden sein,
 					  damit das Herunterladen des neuen Betriebssystems nicht zu lange dauert. Bei <a target="_blank" href="http://www.areamobile.de/specials/25284-ios-7-update-download-und-installation-des-apple-os-auf-iphone-und-ipad">Areamobile.de</a> 
 					  finden Sie eine detailliertere Anleitung.  
@@ -208,7 +224,7 @@
 					Mein <span class="device-name">Gerät</span> lässt sich nicht aktualisieren!
 					</h6>
 					<p>
-					Das bedeutet leider, dass Sie die neue dpa executive App nicht verwenden können. 
+					Das bedeutet leider, dass Sie die neue dpa-Executive-App nicht verwenden können. 
 					</p>
 					<h6>
 					Kann ich die alte App weiterhin verwenden? 
@@ -226,11 +242,11 @@
 					Ich finde die App nicht im App Store!
 					</h6>
 					<p>
-						Die dpa executive gibt es tatsächlich nicht im App Store, sondern nur über <a href="#" onClick="$('#navTabs a:first').tab('show');">diese Seite</a> - mit einem Gutscheincode vom 
+						Die dpa-Executive-App ist im öffentlichen Teil des App Store nicht gelistet. Zugang gibt es nur mit einem Gutschein-Code vom 
 						dpa-Vertrieb. Bitte sprechen Sie uns an: <a href="mailto:vertriebsservice@dpa.com">vertriebsservice@dpa.com</a>. 
 					</p>
 					<h6>
-					Ich habe ein neues iPhone / ein neues iPad, aber die dpa executive App ist verschwunden.
+					Ich habe ein neues iPhone / ein neues iPad, aber die dpa-Executive-App ist verschwunden.
 					</h6>
 					<p>
 						<img src="{{ url_for('static',filename='ios7-icon-appstore.png') }}" style="display: inline-block; vertical-align: text-top; margin-right: 4px; float: left"/>Sie finden die App, wenn Sie auf Ihrem iPhone oder iPad die iTunes-Anwendung (siehe Icon links) öffnen und dort unter "Einkäufe" nachschauen. Sie können die App mit "Einkäufe wiederherstellen" wieder installieren.
@@ -238,8 +254,74 @@
 					</p>
 					
 					</div>
+			<div class="tab-pane" id="tab-screen">
+			      <div class="tabbable tabs-left visible-desktop visible-tablet" style="float: left">
+					<ul class="nav nav-tabs">
+					  <li class="active"><a href="#screen-0" data-toggle="tab">Startseite </a></li>
+					  <li               ><a href="#screen-1" data-toggle="tab">Nachricht </a></li>
+					  <li               ><a href="#screen-4" data-toggle="tab">Bild </a></li>
+					  <li               ><a href="#screen-2" data-toggle="tab">Ressortübersicht</a></li>
+					  <li               ><a href="#screen-5" data-toggle="tab">Suche </a></li>
+					  <li               ><a href="#screen-6" data-toggle="tab">Themenpaket - Hinweis </a></li>
+					  <li               ><a href="#screen-7" data-toggle="tab">Themenpaket - Übersicht </a></li>
+					  <li               ><a href="#screen-8" data-toggle="tab">Themenpaket - Bilder</a></li>
+					  <li               ><a href="#screen-9" data-toggle="tab">iPad - Startseite</a></li>
+					  <li               ><a href="#screen-10" data-toggle="tab">iPad - Themenpaket</a></li>
+					  <li               ><a href="#screen-11" data-toggle="tab">iPad - Bildauswahl</a></li>
+					  <li               ><a href="#screen-12" data-toggle="tab">iPad - Bild</a></li>
+					  <li               ><a href="#screen-13" data-toggle="tab">iPad - Suche</a></li>
+
+					</ul>
+				  </div>
+ 		 		  <div id="screenshots" class="tab-content" style="float: left">
+				     <div class="tab-pane fade active in" id="screen-0">
+				     			   <img src="{{ url_for('static',filename='img/screenshots/small/IMG_3153-0.PNG') }}">
+				     </div>
+					 <div class="tab-pane fade" id="screen-1">
+				     			   <img src="{{ url_for('static',filename='img/screenshots/small/IMG_3153-1.PNG') }}">
+				     </div>
+					 <div class="tab-pane fade" id="screen-2">
+				     			   <img src="{{ url_for('static',filename='img/screenshots/small/IMG_3153-2.PNG') }}">
+				     </div>
+					 <div class="tab-pane fade" id="screen-4">
+				     			   <img src="{{ url_for('static',filename='img/screenshots/small/IMG_3153-4.PNG') }}">
+				     </div>
+					 <div class="tab-pane fade" id="screen-5">
+				     			   <img src="{{ url_for('static',filename='img/screenshots/small/IMG_3153-5.PNG') }}">
+				     </div>
+					 <div class="tab-pane fade" id="screen-6">
+				     			   <img src="{{ url_for('static',filename='img/screenshots/small/IMG_3153-6.PNG') }}">
+				     </div>
+					 <div class="tab-pane fade" id="screen-7">
+				     			   <img src="{{ url_for('static',filename='img/screenshots/small/IMG_3153-7.PNG') }}">
+				     </div>
+					 <div class="tab-pane fade" id="screen-8">
+				     			   <img src="{{ url_for('static',filename='img/screenshots/small/IMG_3153-8.PNG') }}">
+				     </div>
+					 <div class="tab-pane fade" id="screen-9">
+				     			   <img src="{{ url_for('static',filename='img/screenshots/small/ipad-0.png') }}">
+				     </div>
+					 <div class="tab-pane fade" id="screen-10">
+				     			   <img src="{{ url_for('static',filename='img/screenshots/small/ipad-1.png') }}">
+				     </div>
+					 <div class="tab-pane fade" id="screen-11">
+				     			   <img src="{{ url_for('static',filename='img/screenshots/small/ipad-2.png') }}">
+				     </div>
+					 <div class="tab-pane fade" id="screen-12">
+				     			   <img src="{{ url_for('static',filename='img/screenshots/small/ipad-3.png') }}">
+				     </div>
+					 <div class="tab-pane fade" id="screen-13">
+				     			   <img src="{{ url_for('static',filename='img/screenshots/small/ipad-4.png') }}">
+				     </div>
+				     
+
+				  </div>
+			     
 			</div>
-		</div>
+
+			
+			</div>
+	   </div>
 	</div>
 	</div>
   </div>
