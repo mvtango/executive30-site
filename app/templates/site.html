@@ -157,7 +157,7 @@ margin-right: 0.4em !important; border-radius: 10px; " src="{{ url_for('static',
 					<h4>
 					Beschreibung
 					</h4>
-					<p>Die komplett überarbeitete dpa-Executive-App bietet Ihnen eine schnelle und moderne Plattform für Ihren persönlichen Nachrichtenüberblick. Alles auf einen Blick - dank eines klaren Layouts, einer intuitiven Navigation und Aktualisierung im Hintergrund (via WLAN) sind Sie ständig auf dem Laufenden. Mit der Sendefunktion können Sie Meldungen intern weiterleiten.</p>
+					<p>Die dpa-Executive-App bietet Ihnen eine schnellen und übersichtlich gegliederten persönlichen Nachrichtenüberblick. Dank des klaren Layouts und der intuitiven Navigation behalten Sie das Wesentliche im Auge, durch die Aktualisierung im Hintergrund (via WLAN) sind Sie ständig auf dem Laufenden. Per E-Mail können Sie wichtige Meldungen schnell weiterleiten.</p>
 					</div>
 					<!--     <div class="app-links"><a rel="nofollow" target="_blank" href="..." class="see-all"></a><a rel="nofollow" target="_blank" href="..." class="see-all">Support</a></div> -->
 
@@ -186,7 +186,7 @@ margin-right: 0.4em !important; border-radius: 10px; " src="{{ url_for('static',
 					Installation
 					</h4>
 					<p id="notice-nonios" class="hidden">
-					Bitte rufen Sie diese Seite auf Ihrem iPad oder Ihrem iPhone auf. Dort können Sie die App mit Hilfe des Formulars unten installieren.  
+					Bitte rufen Sie <a href="#">diese Seite</a> auf Ihrem iPad oder Ihrem iPhone auf. Dort können Sie die App mit Hilfe des Formulars unten installieren.  
 					Dafür können Sie die <a id="mailto-link">Adresse dieser Seite per Mail an ihr Gerät verschicken</a>.
 					</p>
 					<p id="notice-upgrade" class="hidden">
@@ -194,15 +194,15 @@ margin-right: 0.4em !important; border-radius: 10px; " src="{{ url_for('static',
 					wird die Vorversion installiert. 
 					</p>
 					
-					<div class="well" style="width: 330px" id="notice-install">
+					<div class="well" style="max-width: 400px" id="notice-install">
 				    <p>
-					Bitte <span id="enter-code">geben Sie unten den Gutschein-Code ein und </span>tippen Sie auf "Einlösen im App Store" 
+					Bitte <span id="enter-code">geben Sie im Formularfeld unten den Gutschein-Code ein und </span>tippen Sie auf "Einlösen im App Store" 
 					<form  class="form-inline" action="https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/freeProductCodeWizard" method="GET">
 					<input type="text" class="input-small" placeholder="Gutschein-Code" name="code" />
 					<button type="submit" class="btn btn-small">Einlösen im App Store &raquo;</button>
 					</p>
-					<p style="max-width: 300px"><img src="{{ url_for('static',filename='einloesen.png') }}" style="float: left; vertical-align: text-top; margin-right: 4px"/>
-<b>Tipp:</b> Nach dem Klick müssen Sie im App Store noch einmal auf "Einlösen" tippen.
+					<p style="max-width: 300px">
+<b>Tipp:</b> Nachdem sich der App Store geöffnet hat, müssen Sie dort noch einmal auf "Einlösen" tippen.
 					</p>
 						
 					</form>
@@ -213,11 +213,12 @@ margin-right: 0.4em !important; border-radius: 10px; " src="{{ url_for('static',
 			<div class="tab-pane" id="tab-faq">
 				    <h4>Fragen & Antworten</h4>
 					<h6>
-					Ich ein iPad und ein iPhone - aber nur einen Gutschein-Code. Kann ich die App auf beiden Geräten installieren? 
+					Ich habe ein iPad und ein iPhone - aber nur einen Gutschein-Code. Kann ich die App auf beiden Geräten installieren? 
 					</h6>
 					<p>
                        <img src="{{ url_for('static',filename='ios7-icon-appstore.png') }}" style="display: inline-block; vertical-align: text-top; margin-right: 4px; float: left"/>Ja, wenn beide Geräte mit mit derselben Apple ID verbunden sind. 
-                       Installieren Sie bitte die App zunächst auf einem Gerät. Danach können Sie auf dem anderen Gerät die App Store-Anwendung (siehe Icon links) öffnen und unter "Einkäufe" -&gt; "Einkäufe wiederherstellen" die App installieren. 
+                       Installieren Sie bitte die App zunächst auf einem Gerät. Danach können Sie auf dem anderen Gerät die App Store-Anwendung (siehe Icon links) öffnen und unter "Einkäufe" -&gt; "Einkäufe wiederherstellen" die App noch 
+                       einmal installieren. 
 					</p>
 
 					<h6>
@@ -230,14 +231,14 @@ margin-right: 0.4em !important; border-radius: 10px; " src="{{ url_for('static',
 					Ich finde die App nicht im App Store!
 					</h6>
 					<p>
-						Die dpa-Executive-App ist im öffentlichen Teil des App Store nicht gelistet. Zugang gibt es nur mit einem Gutschein-Code vom 
+						Die dpa-Executive-App ist im öffentlichen Teil des App Stores nicht gelistet. Zugang gibt es nur mit einem Gutschein-Code vom 
 						dpa-Vertrieb. Bitte sprechen Sie uns an: <a href="mailto:vertriebsservice@dpa.com">vertriebsservice@dpa.com</a>. 
 					</p>
 					<h6>
 					Ich habe ein neues iPhone / ein neues iPad, aber die dpa-Executive-App ist verschwunden.
 					</h6>
 					<p>
-						<img src="{{ url_for('static',filename='ios7-icon-appstore.png') }}" style="display: inline-block; vertical-align: text-top; margin-right: 4px; float: left"/>Sie finden die App, wenn Sie auf Ihrem iPhone oder iPad die App Store-Anwendung (siehe Icon links) öffnen und dort unter "Einkäufe" nachschauen. Sie können die App mit "Einkäufe wiederherstellen" wieder installieren.
+						<img src="{{ url_for('static',filename='ios7-icon-appstore.png') }}" style="display: inline-block; vertical-align: text-top; margin-right: 4px; float: left"/>Wenn Sie die dpa-Executive-App zuvor bereitseinmal installiert haben, tippen Sie auf Ihrem iPhone oder iPad auf die App-Store-Anwendung. Tippen Sie dort auf „Einkäufe wiederherstellen“ um die App erneut zu installieren.
 						 
 					</p>
 					<h6>
@@ -251,7 +252,7 @@ margin-right: 0.4em !important; border-radius: 10px; " src="{{ url_for('static',
 					Kann ich die alte App weiterhin verwenden? 
 					</h6>
 					<p>
-						Im Prinzip ja, aber nicht sehr lange. Die Version 2.0 der App für iOS wird noch einige Zeit verfügbar sein. Allerdings wird sie nicht mehr weiterentwickelt. Bitte versuchen Sie, baldmöglichst auf iOS 7 und die neue App zu wechseln.
+						Die Version 2.0 der App für iOS wird noch einige Zeit verfügbar sein, allerdings wird sie nicht mehr weiterentwickelt. Bitte versuchen Sie, baldmöglichst auf iOS 7 und die neue App zu wechseln.
 					</p>
 					
 
@@ -259,13 +260,13 @@ margin-right: 0.4em !important; border-radius: 10px; " src="{{ url_for('static',
 					Wie kann ich auf iOS 7 aktualisieren?
 					</h6>
 					<p>
-					  Sofern das <span class="device-name">Gerät</span> nicht von Ihrer IT-Abteilung gewartet werden muss, können Sie es einfach an das Ladegerät anschließen, Ihre Daten sichern und dann
-					  unter "Einstellungen", "Allgemein", "Software-Updates" die Aktualisierung beginnen. Das <span class="device-name">Gerät</span> sollte mit einem WLAN verbunden sein,
-					  damit das Herunterladen des neuen Betriebssystems nicht zu lange dauert. Bei <a target="_blank" href="http://www.areamobile.de/specials/25284-ios-7-update-download-und-installation-des-apple-os-auf-iphone-und-ipad">Areamobile.de</a> 
+					  Sofern das <span class="device-name">Gerät</span> nicht von Ihrer IT-Abteilung gewartet werden muss, können Sie es an das Ladegerät anschließen, Ihre Daten sichern und dann
+					  unter "Einstellungen" -&gt; "Allgemein" &gt; "Software-Updates" die Aktualisierung beginnen. Das <span class="device-name">Gerät</span> sollte mit einem WLAN verbunden sein,
+					  damit das Herunterladen des neuen Betriebssystems nicht zu lange dauert. Bei <a target="_blank" href="http://www.areamobile.de/specials/25284-ios-7-update-download-und-installation-des-apple-os-auf-iphone-und-ipad">areamobile.de</a> 
 					  finden Sie eine detailliertere Anleitung.  
 				    </p>
 					<h6>
-					Mein <span class="device-name">Gerät</span> lässt sich nicht aktualisieren!
+					Mein <span class="device-name">Gerät</span> lässt sich nicht auf iOS 7 aktualisieren!
 					</h6>
 					<p>
 					Das bedeutet leider, dass Sie die neue dpa-Executive-App nicht verwenden können. 
