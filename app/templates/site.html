@@ -42,6 +42,9 @@
 	  #panes .tab-pane {
 				min-height: 700px;
 	  }
+	  .show-install {
+			display: none;
+	  }
     </style>
 
     <script src="{{ url_for('static',filename='jquery-min.js') }}"></script>
@@ -50,7 +53,9 @@
     <script type="text/javascript">
       $(document).ready(function() {
          var code = location.search.split('?code=')[1];
-         if (code) { $("input[name='code']").val(code); 
+         if (code) { $("input[name='code']").val(code);
+					 $(".hide-install").css({ display : "none" });
+					 $(".show-install").css({ display : "block" });
 					 $("#installation")[0].scrollIntoView();
 					 }
          
@@ -108,7 +113,7 @@
 
               <div class="left span4">
 				<img class="visible-phone" style="float: left; width: 64px; margin-top: 0.8em;
-margin-right: 0.4em !important;" src="{{ url_for('static',filename='logo_3.0.png') }}" >
+margin-right: 0.4em !important; border-radius: 10px; " src="{{ url_for('static',filename='logo_3.0.png') }}" >
 				<h2>dpa-Executive 3.0</h2>
 				<h4>von dpa-newslab</h4>
               </div>
@@ -133,7 +138,7 @@ margin-right: 0.4em !important;" src="{{ url_for('static',filename='logo_3.0.png
 		  <li class="genre"><span class="alabel">Kategorie: </span><a href="https://itunes.apple.com/de/genre/ios-nachrichten/id6009?mt=8">Nachrichten</a></li>
 		  <li class="release-date"><span class="alabel">Aktualisiert: </span> 29.1.2014</li>
 		  <li><span class="alabel">Version: </span>3.0</li>
-		  <li><span class="alabel">Größe: </span>6.61 MB</li>
+		  <li><span class="alabel">Größe: </span>1.1 MB</li>
 		  <li class="language"><span class="alabel">Sprache: </span>Deutsch</li>
 		  <li><span class="alabel">Entwickler: </span>dpa-newslab</li>
 		  <li class="copyright">© 2013-2014 dpa-infocom GmbH</li>
@@ -145,7 +150,10 @@ margin-right: 0.4em !important;" src="{{ url_for('static',filename='logo_3.0.png
     <div class="span8">
 		<div id="panes" class="tab-content">
 			<div class="tab-pane active" id="tab-app">
-					<div more-text="Mehr" class="product-review">
+				    <div class="show-install">
+				    <a href="#" onClick="$('.hide-install').show();$('.show-install').hide();">Beschreibung der App anzeigen</a>
+				    </div>
+					<div more-text="Mehr" class="product-review hide-install">
 					<h4>
 					Beschreibung
 					</h4>
@@ -153,7 +161,7 @@ margin-right: 0.4em !important;" src="{{ url_for('static',filename='logo_3.0.png
 					</div>
 					<!--     <div class="app-links"><a rel="nofollow" target="_blank" href="..." class="see-all"></a><a rel="nofollow" target="_blank" href="..." class="see-all">Support</a></div> -->
 
-					<div more-text="Mehr" class="product-review">
+					<div more-text="Mehr" class="product-review hide-install">
 					<h4>
 					Neue Funktionen von Version 3.0
 					</h4>
@@ -164,7 +172,7 @@ margin-right: 0.4em !important;" src="{{ url_for('static',filename='logo_3.0.png
 					</ul>
 					</div>
 
-					<div more-text="Mehr" class="product-review">
+					<div more-text="Mehr" class="product-review hide-install">
 					<h4>
 					Gutschein-Code
 					</h4>
@@ -186,52 +194,32 @@ margin-right: 0.4em !important;" src="{{ url_for('static',filename='logo_3.0.png
 					wird die Vorversion installiert. 
 					</p>
 					
-					<p id="notice-install">
-					Bitte <span id="enter-code">geben Sie unten den Gutschein-Code ein und </span>klicken Sie auf "Einlösen". Die App wird dann auf Ihrem <span class="device-name">Gerät</span> installiert.
+					<div class="well" style="width: 330px" id="notice-install">
+				    <p>
+					Bitte <span id="enter-code">geben Sie unten den Gutschein-Code ein und </span>tippen Sie auf "Einlösen im App Store" 
 					<form  class="form-inline" action="https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/freeProductCodeWizard" method="GET">
-					<input type="text" class="input-medium"  placeholder="Gutschein-Code" name="code" />
-					<button type="submit" class="btn">Einlösen</button>
-					</form>
+					<input type="text" class="input-small" placeholder="Gutschein-Code" name="code" />
+					<button type="submit" class="btn btn-small">Einlösen im App Store &raquo;</button>
 					</p>
+					<p style="max-width: 300px"><img src="{{ url_for('static',filename='einloesen.png') }}" style="float: left; vertical-align: text-top; margin-right: 4px"/>
+<b>Tipp:</b> Nach dem Klick müssen Sie im App Store noch einmal auf "Einlösen" tippen.
+					</p>
+						
+					</form>
+					</div>
 					</div>
 
 			</div>
 			<div class="tab-pane" id="tab-faq">
 				    <h4>Fragen & Antworten</h4>
 					<h6>
-					Warum funktioniert die App nur mit iOS7?
+					Ich ein iPad und ein iPhone - aber nur einen Gutschein-Code. Kann ich die App auf beiden Geräten installieren? 
 					</h6>
 					<p>
-						Viele der Verbesserungen lassen sich nur mit der neuen Version von Apples Betriebssystem umsetzen. 
-					</p>
-					<h6>
-					Wird es auch eine App für Blackberry, Android- oder Windows Mobile-Geräte geben?
-					</h6>
-					<p>
-						Das hängt unter anderem von der Nachfrage ab. Brauchen Sie solche Apps für Ihre Arbeit? Dann schreiben Sie uns bitte an <a href="mailto:executive-support@dpa-info.com">executive-support@dpa-info.com</a>.
+                       <img src="{{ url_for('static',filename='ios7-icon-appstore.png') }}" style="display: inline-block; vertical-align: text-top; margin-right: 4px; float: left"/>Ja, wenn beide Geräte mit mit derselben Apple ID verbunden sind. 
+                       Installieren Sie bitte die App zunächst auf einem Gerät. Danach können Sie auf dem anderen Gerät die App Store-Anwendung (siehe Icon links) öffnen und unter "Einkäufe" -&gt; "Einkäufe wiederherstellen" die App installieren. 
 					</p>
 
-					<h6>
-					Wie kann ich auf iOS7 aktualisieren?
-					</h6>
-					<p>
-					  Sofern das <span class="device-name">Gerät</span> nicht von Ihrer IT-Abteilung gewartet werden muss, können Sie es einfach an das Ladegerät anschließen, Ihre Daten sichern und dann
-					  unter "Einstellungen", "Allgemein", "Software-Updates" die Aktualisierung beginnen. Das <span class="device-name">Gerät</span> sollte mit einem WLAN verbunden sein,
-					  damit das Herunterladen des neuen Betriebssystems nicht zu lange dauert. Bei <a target="_blank" href="http://www.areamobile.de/specials/25284-ios-7-update-download-und-installation-des-apple-os-auf-iphone-und-ipad">Areamobile.de</a> 
-					  finden Sie eine detailliertere Anleitung.  
-				    </p>
-					<h6>
-					Mein <span class="device-name">Gerät</span> lässt sich nicht aktualisieren!
-					</h6>
-					<p>
-					Das bedeutet leider, dass Sie die neue dpa-Executive-App nicht verwenden können. 
-					</p>
-					<h6>
-					Kann ich die alte App weiterhin verwenden? 
-					</h6>
-					<p>
-						Im Prinzip ja, aber nicht sehr lange. Die Version 2.0 der App für iOS wird noch einige Zeit verfügbar sein. Allerdings wird sie nicht mehr weiterentwickelt. Bitte versuchen Sie, baldmöglichst auf iOS 7 und die neue App zu wechseln.
-					</p>
 					<h6>
 					Ich habe meinen Gutschein-Code verloren. Wo bekomme ich einen neuen? 
 					</h6>
@@ -249,8 +237,44 @@ margin-right: 0.4em !important;" src="{{ url_for('static',filename='logo_3.0.png
 					Ich habe ein neues iPhone / ein neues iPad, aber die dpa-Executive-App ist verschwunden.
 					</h6>
 					<p>
-						<img src="{{ url_for('static',filename='ios7-icon-appstore.png') }}" style="display: inline-block; vertical-align: text-top; margin-right: 4px; float: left"/>Sie finden die App, wenn Sie auf Ihrem iPhone oder iPad die iTunes-Anwendung (siehe Icon links) öffnen und dort unter "Einkäufe" nachschauen. Sie können die App mit "Einkäufe wiederherstellen" wieder installieren.
+						<img src="{{ url_for('static',filename='ios7-icon-appstore.png') }}" style="display: inline-block; vertical-align: text-top; margin-right: 4px; float: left"/>Sie finden die App, wenn Sie auf Ihrem iPhone oder iPad die App Store-Anwendung (siehe Icon links) öffnen und dort unter "Einkäufe" nachschauen. Sie können die App mit "Einkäufe wiederherstellen" wieder installieren.
 						 
+					</p>
+					<h6>
+					Warum funktioniert die App nur mit iOS 7?
+					</h6>
+					<p>
+						Viele der Verbesserungen lassen sich nur mit der neuen Version von Apples Betriebssystem umsetzen. 
+					</p>
+
+					<h6>
+					Kann ich die alte App weiterhin verwenden? 
+					</h6>
+					<p>
+						Im Prinzip ja, aber nicht sehr lange. Die Version 2.0 der App für iOS wird noch einige Zeit verfügbar sein. Allerdings wird sie nicht mehr weiterentwickelt. Bitte versuchen Sie, baldmöglichst auf iOS 7 und die neue App zu wechseln.
+					</p>
+					
+
+					<h6>
+					Wie kann ich auf iOS 7 aktualisieren?
+					</h6>
+					<p>
+					  Sofern das <span class="device-name">Gerät</span> nicht von Ihrer IT-Abteilung gewartet werden muss, können Sie es einfach an das Ladegerät anschließen, Ihre Daten sichern und dann
+					  unter "Einstellungen", "Allgemein", "Software-Updates" die Aktualisierung beginnen. Das <span class="device-name">Gerät</span> sollte mit einem WLAN verbunden sein,
+					  damit das Herunterladen des neuen Betriebssystems nicht zu lange dauert. Bei <a target="_blank" href="http://www.areamobile.de/specials/25284-ios-7-update-download-und-installation-des-apple-os-auf-iphone-und-ipad">Areamobile.de</a> 
+					  finden Sie eine detailliertere Anleitung.  
+				    </p>
+					<h6>
+					Mein <span class="device-name">Gerät</span> lässt sich nicht aktualisieren!
+					</h6>
+					<p>
+					Das bedeutet leider, dass Sie die neue dpa-Executive-App nicht verwenden können. 
+					</p>
+					<h6>
+					Wird es auch eine App für Blackberry, Android- oder Windows Mobile-Geräte geben?
+					</h6>
+					<p>
+						Das hängt unter anderem von der Nachfrage ab. Brauchen Sie solche Apps für Ihre Arbeit? Dann schreiben Sie uns bitte an <a href="mailto:executive-support@dpa-info.com">executive-support@dpa-info.com</a>.
 					</p>
 					
 					</div>
